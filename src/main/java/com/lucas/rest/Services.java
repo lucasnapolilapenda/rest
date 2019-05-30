@@ -99,11 +99,11 @@ public class Services {
         }
 
         for (Book book : p) {
-            bookList += (            "Title: " + book.getTitle () + " / " +
-                                    "Publisher: " + book.getPublisher () + " / " +
-                                    "Author: " + book.getAuthor () + " / " +
-                                    "Description: " +  book.getDescription ()+ " / " +
-                                    "ID: " + book.getId () + " / " +
+            bookList += (            "Title: " + book.getTitle ().replace ( "%" , " " ) + " / " +
+                                    "Publisher: " + book.getPublisher ().replace ( "%" , " " ) + " / " +
+                                    "Author: " + book.getAuthor ().replace ( "%" , " " ) + " / " +
+                                    "Description: " +  book.getDescription ().replace ( "%" , " " )+ " / " +
+                                    " ID: " + book.getId () + " / " +
                                     "ISBN: " + book.getIsbn ());
             System.out.println ( " " );
         }

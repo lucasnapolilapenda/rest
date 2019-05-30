@@ -1,5 +1,6 @@
 package com.lucas.rest;
 import java.io.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -10,19 +11,19 @@ public class Front {
     public void bookCreation(Boolean put) {
         System.out.println ( "***** Book Creation Module *****" );
         Book book = new Book ( );
-        Scanner input = new Scanner ( System.in );
+
         System.out.println ( "Please, Book Title, Remember only text accepted" );
-        book.setTitle ( input.next( ) );
+        book.setTitle ( spacesManagementScanner ( false ).replace ( " ", "%" ));
         System.out.println ( "Please, Book Author, Remember only text accepted" );
-        book.setAuthor ( input.next ( ) );
+        book.setAuthor ( spacesManagementScanner ( false ) .replace ( " ", "%" ));
         System.out.println ( "Please, Book Description, Remember only text accepted" );
-        book.setDescription ( input.next ( ) );
+        book.setDescription ( spacesManagementScanner ( false ).replace ( " ", "%" ));
         System.out.println ( "Please, Book Publisher, Remember only text accepted" );
-        book.setPublisher ( input.next ( ) );
+        book.setPublisher ( spacesManagementScanner ( false ) .replace ( " ", "%" ));
         System.out.println ( "Please, Book ID, Remember only number accepted" );
-        book.setId ( input.nextInt ( ) );
+        book.setId ( Integer.parseInt(spacesManagementScanner ( true )));
         System.out.println ( "Please, Book Isbn, Remember only number accepted" );
-        book.setIsbn ( input.nextInt ( ) );
+        book.setIsbn ( Integer.parseInt(spacesManagementScanner ( true )) );
 
         String putValidation = put.toString ();
 
@@ -51,6 +52,9 @@ public class Front {
             System.out.println ( "Exception in NetClientGet:- " + e );
 
         }
+
+
+
 
         Menu.showMenu ( );
 
@@ -141,6 +145,30 @@ public class Front {
             System.out.println ( output );
         }
         conn.disconnect ( );
+
+    }
+
+    public String spacesManagementScanner (Boolean number) {
+
+        try {
+            Scanner scan = new Scanner(System.in);
+            if (!number) {
+                String name = "";
+
+                name += scan.nextLine ( );
+
+                return name;
+            }
+
+            Integer value = scan.nextInt ( );
+            return value.toString ( );
+        }catch (InputMismatchException | NumberFormatException ex ) {
+            System.out.println ( "Please, check the input" );
+            spacesManagementScanner (true  );
+        }
+
+        return "";
+
 
     }
 

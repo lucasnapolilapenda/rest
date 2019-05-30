@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Menu {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
 
         showMenu ( );
 
@@ -26,6 +25,7 @@ public class Menu {
             System.out.println ( "5. Update Book" );
             System.out.println ( "6. Delete Book" );
             System.out.println ( "0. Quit" );
+            System.out.println ( "" );
 
             //Leer la respuesta del usuario
             Scanner sc = new Scanner ( System.in );

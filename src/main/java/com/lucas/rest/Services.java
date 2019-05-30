@@ -1,9 +1,6 @@
 package com.lucas.rest;
 
 import javax.ws.rs.*;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 
@@ -13,10 +10,6 @@ import java.util.Set;
 
 @Path ("/books")
 public class Services {
-
-    private static Map<Integer,Book> repository = new HashMap<Integer,Book>();
-
-
 
     @POST
     @Path ( "/add" )
@@ -36,14 +29,16 @@ public class Services {
         book.setIsbn ( Integer.parseInt ( isbn ) );
 
 
+
+
         Response response = new Response ();
-        if (repository.get(book.getId () ) != null) {
+        if (BookRepository.getRepository ().get(book.getId () ) != null) {
             response.setStatus ( false );
             response.setMessage ( "Book Already Exists" );
             return response.getMessage ();
         }
 
-        repository.putIfAbsent (book.getId (),book);
+        BookRepository.getRepository ().putIfAbsent (book.getId (),book);
         response.setStatus ( true );
         response.setMessage ( "Book Created Succesfully" );
 
@@ -56,12 +51,12 @@ public class Services {
     @Path ( "/delete" )
     public String deletebook (@QueryParam ("id") int id) {
         Response response = new Response ();
-        if (repository.get ( id ) == null) {
+        if (BookRepository.getRepository ().get ( id ) == null) {
             response.setStatus ( false );
             response.setMessage ( "Book Doest Exist" );
             return response.getMessage ();
         }
-        repository.remove ( id );
+        BookRepository.getRepository ().remove ( id );
         response.setStatus ( true );
         response.setMessage ( "Book deleted successfully" );
         return response.getMessage ();
@@ -70,7 +65,7 @@ public class Services {
     @GET
     @Path ( "/get" )
     public String getPerson(@QueryParam ("id") int id) {
-        return "Title: " + repository.get(id).getTitle ()+ " / " + "ID: " + repository.get(id).getId ();
+        return "Title: " + BookRepository.getRepository ().get(id).getTitle ()+ " / " + "ID: " + BookRepository.getRepository ().get(id).getId ();
     }
 
 
@@ -78,11 +73,11 @@ public class Services {
     @Path ( "/getAll" )
     public String getAllPersons ()  {
         String bookList = "";
-        Set <Integer> ids = repository.keySet();
+        Set <Integer> ids = BookRepository.getRepository().keySet ();
         Book[] p = new Book[ids.size()];
         int i=0;
         for(Integer id : ids){
-            p[i] = repository.get(id);
+            p[i] = BookRepository.getRepository ().get(id);
             i++;
         }
 

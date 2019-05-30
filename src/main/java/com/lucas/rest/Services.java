@@ -18,7 +18,8 @@ public class Services {
                             @QueryParam ( "description" )String description,
                             @QueryParam ( "publisher" ) String publisher,
                             @QueryParam ( "id" ) String id,
-                            @QueryParam ( "isbn") String isbn)  {
+                            @QueryParam ( "isbn") String isbn,
+                            @QueryParam ( "put" ) String put) {
 
         Book book = new Book ();
         book.setTitle ( title);
@@ -28,23 +29,39 @@ public class Services {
         book.setId ( Integer.parseInt ( id ) );
         book.setIsbn ( Integer.parseInt ( isbn ) );
 
+        if (!Boolean.parseBoolean (put )) {
+            Response response = new Response ( );
+            if (BookRepository.getRepository ( ).get ( book.getId ( ) ) != null) {
+                response.setStatus ( false );
+                response.setMessage ( "Book Already Exists" );
+                return response.getMessage ( );
+            }
 
+            BookRepository.getRepository ( ).putIfAbsent ( book.getId ( ), book );
+            response.setStatus ( true );
+            response.setMessage ( "Book Created Succesfully" );
 
-
-        Response response = new Response ();
-        if (BookRepository.getRepository ().get(book.getId () ) != null) {
-            response.setStatus ( false );
-            response.setMessage ( "Book Already Exists" );
-            return response.getMessage ();
+            return response.getMessage ( );
         }
 
-        BookRepository.getRepository ().putIfAbsent (book.getId (),book);
-        response.setStatus ( true );
-        response.setMessage ( "Book Created Succesfully" );
+        if (Boolean.parseBoolean ( put)) {
+            Response response = new Response ( );
+            if (BookRepository.getRepository ( ).get ( book.getId ( ) ) == null) {
+                response.setStatus ( false );
+                response.setMessage ( "Book does not exist" );
+                return response.getMessage ( );
+            }
+            BookRepository.getRepository ( ).put ( book.getId ( ), book );
+            response.setStatus ( true );
+            response.setMessage ( "Book Updated Succesfully" );
 
-        return response.getMessage ();
+            return response.getMessage ( );
+
+        }
+
+        return "Something run in the service process";
     }
-    
+
     
 
     @DELETE

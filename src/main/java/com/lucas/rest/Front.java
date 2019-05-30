@@ -1,7 +1,4 @@
 package com.lucas.rest;
-
-
-
 import java.io.*;
 import java.util.Scanner;
 import java.net.HttpURLConnection;
@@ -10,7 +7,7 @@ import static javax.ws.rs.core.HttpHeaders.USER_AGENT;
 
 public class Front {
 
-    public void bookCreation() {
+    public void bookCreation(Boolean put) {
         System.out.println ( "***** Book Creation Module *****" );
         Book book = new Book ( );
         Scanner input = new Scanner ( System.in );
@@ -27,13 +24,16 @@ public class Front {
         System.out.println ( "Please, Book Isbn, Remember only number accepted" );
         book.setIsbn ( input.nextInt ( ) );
 
+        String putValidation = put.toString ();
+
         try {
             String in = "title="+book.title + "&"
                     + "author="+book.author + "&"
                     + "description="+book.description + "&"
                     + "publisher=" + book.publisher + "&"
                     + "id="+ book.id + "&"
-                    + "isbn="+book.isbn;
+                    + "isbn="+book.isbn + "&"
+                    + "put="+putValidation;
 
             String encodedString = ("http://localhost:8080/rest_war/api/books/add?"+in);
 

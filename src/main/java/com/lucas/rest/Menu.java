@@ -46,9 +46,10 @@ public class Menu {
                     new Front ().deleteGetBook (false);
                     break;
                 case 4:
-                    new Front ().bookCreation ();
+                    new Front ().bookCreation (false);
                     break;
                 case 5:
+                    new Front ().bookCreation (true);
                     break;
                 case 6:
                     new Front ().deleteGetBook (true);

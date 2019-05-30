@@ -14,7 +14,7 @@ public class Menu {
     public static void showMenu() {
         int exit = 0;
         do {
-
+            System.out.println ( "" );
             System.out.println ( "****** Welcome to Solo's Library ******" );
             System.out.println ( "" );
             System.out.println ( "Please, Select one Option" );

@@ -11,11 +11,11 @@ import static javax.ws.rs.core.HttpHeaders.USER_AGENT;
 public class Front {
 
     public void bookCreation() {
-
+        System.out.println ( "***** Book Creation Module *****" );
         Book book = new Book ( );
         Scanner input = new Scanner ( System.in );
         System.out.println ( "Please, Book Title, Remember only text accepted" );
-        book.setTitle ( input.next ( ) );
+        book.setTitle ( input.next( ) );
         System.out.println ( "Please, Book Author, Remember only text accepted" );
         book.setAuthor ( input.next ( ) );
         System.out.println ( "Please, Book Description, Remember only text accepted" );
@@ -36,8 +36,6 @@ public class Front {
                     + "isbn="+book.isbn;
 
             String encodedString = ("http://localhost:8080/rest_war/api/books/add?"+in);
-            System.out.println ( encodedString );
-
 
             URL url = new URL ( encodedString );
             HttpURLConnection conn = (HttpURLConnection) url.openConnection ( );
@@ -75,7 +73,7 @@ public class Front {
     }
 
     public void getList() {
-
+        System.out.println ( "***** Book List Module *****" );
             try {
 
                 URL url = new URL ( "http://localhost:8080/rest_war/api/books/getAll" );
@@ -89,16 +87,25 @@ public class Front {
                 System.out.println ( "Exception in Solo's System:- " + e );
 
             }
+
+        Menu.showMenu ( );
     }
 
     public void deleteGetBook(Boolean delete) {
 
+        String module = "";
+        if (delete) { module = "Delete";} else {module = "Display";}
+        System.out.println ( "***** " + module + " Book Module *****" );
+
+
         Scanner input = new Scanner ( System.in );
+        System.out.println ( "Please, Type the Book's ID to be " + module.toLowerCase ());
         Integer id = input.nextInt ();
         String stringID = id.toString ();
+
+
         String requestMethod = "";
         String path = "";
-
         if (delete) {requestMethod = "DELETE";} else {requestMethod = "GET";}
         if (delete) {path = "delete";} else {path = "get";}
 
@@ -115,6 +122,8 @@ public class Front {
             System.out.println ( "Exception in Solo's System:- " + e );
 
         }
+
+        Menu.showMenu ( );
     }
 
 

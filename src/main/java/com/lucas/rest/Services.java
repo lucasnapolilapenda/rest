@@ -1,5 +1,4 @@
 package com.lucas.rest;
-
 import javax.ws.rs.*;
 import java.util.Set;
 
@@ -104,7 +103,8 @@ public class Services {
                                     "Author: " + book.getAuthor ().replace ( "%" , " " ) + " / " +
                                     "Description: " +  book.getDescription ().replace ( "%" , " " )+ " / " +
                                     " ID: " + book.getId () + " / " +
-                                    "ISBN: " + book.getIsbn ());
+                                    "ISBN: " + book.getIsbn ()) +
+                                    "\n";
             System.out.println ( " " );
         }
 

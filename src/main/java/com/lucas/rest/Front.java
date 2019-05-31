@@ -1,9 +1,12 @@
 package com.lucas.rest;
 import java.io.*;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.stream.Stream;
+
 import static javax.ws.rs.core.HttpHeaders.USER_AGENT;
 
 public class Front {
@@ -28,7 +31,7 @@ public class Front {
         String putValidation = put.toString ();
 
         try {
-            String in = "title="+book.title + "&"
+            String service = "title="+book.title + "&"
                     + "author="+book.author + "&"
                     + "description="+book.description + "&"
                     + "publisher=" + book.publisher + "&"
@@ -36,7 +39,7 @@ public class Front {
                     + "isbn="+book.isbn + "&"
                     + "put="+putValidation;
 
-            String encodedString = ("http://localhost:8080/rest_war/api/books/add?"+in);
+            String encodedString = ("http://localhost:8080/rest_war/api/books/add?"+service);
 
             URL url = new URL ( encodedString );
             HttpURLConnection conn = (HttpURLConnection) url.openConnection ( );
@@ -48,13 +51,11 @@ public class Front {
 
             httpExceptionManager ( conn );
 
+
         } catch (Exception e) {
             System.out.println ( "Exception in NetClientGet:- " + e );
 
         }
-
-
-
 
         Menu.showMenu ( );
 
@@ -84,6 +85,10 @@ public class Front {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection ( );
                 conn.setRequestMethod ( "GET" );
                 conn.setRequestProperty ( "Accept", "text/plain");
+
+                BufferedReader in = new BufferedReader ( new InputStreamReader ( conn.getInputStream () ) );
+                Stream <String> bookList = in.lines ();
+                bookList.forEach ( System.out::println );
 
                 httpExceptionManager ( conn );
 
@@ -166,8 +171,7 @@ public class Front {
             System.out.println ( "Please, check the input" );
             spacesManagementScanner (true  );
         }
-
-        return "";
+        return "1";
 
 
     }

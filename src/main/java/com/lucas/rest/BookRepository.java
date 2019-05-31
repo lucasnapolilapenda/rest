@@ -2,6 +2,7 @@ package com.lucas.rest;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class BookRepository {
     /*private static BookRepository ourInstance = new BookRepository ( );
@@ -10,7 +11,7 @@ public class BookRepository {
         return ourInstance;
     } */
 
-    private static Map <Integer,Book> repository = new HashMap <Integer,Book> ();
+    private static Map <Integer,Book> repository = new ConcurrentHashMap <> ();
 
     public static Map <Integer, Book> getRepository() {
         return repository;

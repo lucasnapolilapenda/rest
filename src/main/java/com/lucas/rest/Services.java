@@ -82,7 +82,7 @@ public class Services {
     @GET
     @Path ( "/get" )
     public String getPerson(@QueryParam ("id") int id) {
-        return "Title: " + BookRepository.getRepository ().get(id).getTitle ()+ " / " + "ID: " + BookRepository.getRepository ().get(id).getId ();
+        return "Title: " + BookRepository.getRepository ().get(id).getTitle ().replace ( "%", " " )+ " / " + "ID: " + BookRepository.getRepository ().get(id).getId ();
     }
 
 

@@ -1,7 +1,7 @@
 package com.lucas.rest;
 import java.io.*;
+import java.text.BreakIterator;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -90,6 +90,8 @@ public class Front {
                 Stream <String> bookList = in.lines ();
                 bookList.forEach ( System.out::println );
 
+                System.out.println ( "mamguebo" );
+
                 httpExceptionManager ( conn );
 
             } catch (Exception e) {
@@ -154,26 +156,23 @@ public class Front {
     }
 
     public String spacesManagementScanner (Boolean number) {
+        Scanner scan = new Scanner(System.in);
+        String name = "";
+
+
+        if (!number) {name += scan.nextLine ( ); return name;}
+
 
         try {
-            Scanner scan = new Scanner(System.in);
-            if (!number) {
-                String name = "";
+            Integer value;
+            value = scan.nextInt ( );
+            return value.toString ();
 
-                name += scan.nextLine ( );
-
-                return name;
-            }
-
-            Integer value = scan.nextInt ( );
-            return value.toString ( );
-        }catch (InputMismatchException | NumberFormatException ex ) {
+        }catch (InputMismatchException |  NumberFormatException ex ) {
             System.out.println ( "Please, check the input" );
-            spacesManagementScanner (true  );
         }
-        return "1";
 
-
+        return spacesManagementScanner (true  ) ;
     }
 
 

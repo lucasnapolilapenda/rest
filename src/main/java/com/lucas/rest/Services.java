@@ -116,7 +116,14 @@ public class Services {
     @GET
     @Path ( "/get" )
     public String getPerson(@QueryParam ("id") int id) {
-        return "Title: " + BookRepository.getRepository ().get(id).getTitle ().replace ( "%", " " )+ " / " + "ID: " + BookRepository.getRepository ().get(id).getId ();
+        Response response = new Response ();
+        if (BookRepository.getRepository ().get ( id ) == null) {
+            response.setStatus ( false );
+            response.setMessage ("Book doest Exist");
+            return response.getMessage ();
+        }
+        return "Title: " + BookRepository.getRepository ().get(id).getTitle ().replace ( "%", " " )+
+                " / " + "ID: " + BookRepository.getRepository ().get(id).getId ();
     }
 
     /**

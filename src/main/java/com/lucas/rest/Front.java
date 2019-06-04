@@ -21,9 +21,6 @@ import static javax.ws.rs.core.HttpHeaders.USER_AGENT;
 
 public class Front {
 
-
-
-
     /** Client side Input and service to create or update a new book
      * @param put to define if it is a Post or Put
      */

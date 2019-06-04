@@ -1,6 +1,5 @@
 package com.lucas.rest;
 import java.io.*;
-import java.text.BreakIterator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.net.HttpURLConnection;
@@ -89,8 +88,6 @@ public class Front {
                 BufferedReader in = new BufferedReader ( new InputStreamReader ( conn.getInputStream () ) );
                 Stream <String> bookList = in.lines ();
                 bookList.forEach ( System.out::println );
-
-                System.out.println ( "mamguebo" );
 
                 httpExceptionManager ( conn );
 

@@ -21,6 +21,8 @@ public class Menu {
 
 
     /**Display the menu. This starts when the app load
+     * @throws NumberFormatException manage Integer input
+     * @throws InputMismatchException manage Integer input
      */
 
 

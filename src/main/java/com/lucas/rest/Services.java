@@ -12,16 +12,23 @@ import java.util.Set;
 @Consumes("text/plain")
 @Produces("text/plain")
 
+
+
+@Path ("/books")
 /**
  * Represents all the book services
  */
-
-@Path ("/books")
 public class Services {
 
 
     /**
      * Post/Put Service to create or update a book
+     * @param title Book Title
+     * @param author Book Author
+     * @param description Book Description
+     * @param publisher Book Publisher
+     * @param id Book ID - Important to manage delete and get
+     * @param isbn Book Identification
      * @param put is to change to put or post
      * @return String error message or confirmation
      */

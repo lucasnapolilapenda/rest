@@ -6,11 +6,12 @@ package com.lucas.rest;
  * @since 1.0
  */
 
+/**
+ * Represents all the book information
+ */
 public class Book {
 
-    /**
-     * Represents all the book information
-     */
+
 
 
     Integer isbn;

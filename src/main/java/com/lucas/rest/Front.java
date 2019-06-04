@@ -6,15 +6,14 @@ package com.lucas.rest;
  * @since 1.0
  */
 
-
 import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.stream.Stream;
-
 import static javax.ws.rs.core.HttpHeaders.USER_AGENT;
+
 
 /**
  * Represents all the client connections (GET, POST, DELETE, PUT)
@@ -22,7 +21,10 @@ import static javax.ws.rs.core.HttpHeaders.USER_AGENT;
 
 public class Front {
 
-    /** Client side. Input and service to create or update a new book
+
+
+
+    /** Client side Input and service to create or update a new book
      * @param put to define if it is a Post or Put
      */
 
@@ -77,7 +79,7 @@ public class Front {
 
     }
 
-    /**Client side. Only shoes the the help detail
+    /**Client side Only shoes the the help detail
      */
 
 
@@ -96,7 +98,7 @@ public class Front {
 
     }
 
-    /**Client side.  to get the list of books
+    /**Client side  to get the list of books
      */
 
     public void getList() {
@@ -122,7 +124,7 @@ public class Front {
         Menu.showMenu ( );
     }
 
-    /**Client side. to get the list of books
+    /**Client side to get the list of books
      * @param delete to define if the service is a get or delete
      */
 
@@ -164,6 +166,8 @@ public class Front {
 
     /**Method to manage the exeptions
      * @param conn it is to get the coonection
+     * @throws RuntimeException in any problem conecting with server
+     * @throws IOException to manage conn
      */
 
 
@@ -185,6 +189,9 @@ public class Front {
 
     /**Method to manage spaces in the console input and to manage the exceptions InputMismatchException |  NumberFormatException ex
      * @param number it is to manage integer and string
+     * @throws InputMismatchException manage not integer input
+     * @throws NumberFormatException manage not integer input
+     * @return String with the value or string with characters
      */
 
     public String spacesManagementScanner (Boolean number) {

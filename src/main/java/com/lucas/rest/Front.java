@@ -27,7 +27,10 @@ public class Front {
 
 
     public void bookCreation(Boolean put) {
-        System.out.println ( "***** Book Creation Module *****" );
+        if (put) { System.out.println ( "***** Book Update Module *****" );}
+        else {System.out.println ( "***** Book Creation Module *****" );}
+
+
         Book book = new Book ( );
 
         System.out.println ( "Please, Book Title, Remember only text accepted" );

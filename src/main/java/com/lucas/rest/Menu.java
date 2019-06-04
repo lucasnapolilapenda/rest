@@ -78,7 +78,6 @@ public class Menu {
                         break;
                 }
 
-
             } while (exit != 0);
         } catch (InputMismatchException | NumberFormatException ex) {
             System.out.println ( "Please, check the input" );

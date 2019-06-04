@@ -1,4 +1,12 @@
 package com.lucas.rest;
+/** Library Solos Rest.
+ * @author Lucas Napoli
+ * @author https://github.com/lucasnapolilapenda/rest
+ * @version 1.1
+ * @since 1.0
+ */
+
+
 import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,7 +16,16 @@ import java.util.stream.Stream;
 
 import static javax.ws.rs.core.HttpHeaders.USER_AGENT;
 
+/**
+ * Represents all the client connections (GET, POST, DELETE, PUT)
+ */
+
 public class Front {
+
+    /** Client side. Input and service to create or update a new book
+     * @param put to define if it is a Post or Put
+     */
+
 
     public void bookCreation(Boolean put) {
         System.out.println ( "***** Book Creation Module *****" );
@@ -60,6 +77,9 @@ public class Front {
 
     }
 
+    /**Client side. Only shoes the the help detail
+     */
+
 
     public void help() {
         System.out.println ( "***** Welcome to Solo's Library System *****" );
@@ -75,6 +95,9 @@ public class Front {
 
 
     }
+
+    /**Client side.  to get the list of books
+     */
 
     public void getList() {
         System.out.println ( "***** Book List Module *****" );
@@ -98,6 +121,11 @@ public class Front {
 
         Menu.showMenu ( );
     }
+
+    /**Client side. to get the list of books
+     * @param delete to define if the service is a get or delete
+     */
+
 
     public void deleteGetBook(Boolean delete) {
 
@@ -134,6 +162,9 @@ public class Front {
         Menu.showMenu ( );
     }
 
+    /**Method to manage the exeptions
+     * @param conn it is to get the coonection
+     */
 
 
     public void httpExceptionManager (HttpURLConnection conn) throws IOException {
@@ -151,6 +182,10 @@ public class Front {
         conn.disconnect ( );
 
     }
+
+    /**Method to manage spaces in the console input and to manage the exceptions InputMismatchException |  NumberFormatException ex
+     * @param number it is to manage integer and string
+     */
 
     public String spacesManagementScanner (Boolean number) {
         Scanner scan = new Scanner(System.in);

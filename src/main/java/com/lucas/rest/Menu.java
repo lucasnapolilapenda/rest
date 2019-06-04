@@ -1,9 +1,16 @@
 package com.lucas.rest;
+/** Library Solos Rest.
+ * @author Lucas Napoli
+ * @author https://github.com/lucasnapolilapenda/rest
+ * @version 1.1
+ * @since 1.0
+ */
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
+/**Starting Point
+ */
 public class Menu {
 
     public static void main(String[] args) {
@@ -11,6 +18,11 @@ public class Menu {
         showMenu ( );
 
     }
+
+
+    /**Display the menu. This starts when the app load
+     */
+
 
     public static void showMenu() {
         try {

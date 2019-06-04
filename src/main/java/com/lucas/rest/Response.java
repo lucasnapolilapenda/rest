@@ -1,4 +1,10 @@
 package com.lucas.rest;
+/** Library Solos Rest.
+ * @author Lucas Napoli
+ * @author https://github.com/lucasnapolilapenda/rest
+ * @version 1.1
+ * @since 1.0
+ */
 
 public class Response {
 

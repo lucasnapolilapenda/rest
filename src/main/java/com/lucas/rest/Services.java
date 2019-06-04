@@ -1,14 +1,30 @@
 package com.lucas.rest;
+/** Library Solos Rest.
+ * @author Lucas Napoli
+ * @author https://github.com/lucasnapolilapenda/rest
+ * @version 1.1
+ * @since 1.0
+ */
+
 import javax.ws.rs.*;
 import java.util.Set;
-
-
 
 @Consumes("text/plain")
 @Produces("text/plain")
 
+/**
+ * Represents all the book services
+ */
+
 @Path ("/books")
 public class Services {
+
+
+    /**
+     * Post/Put Service to create or update a book
+     * @param put is to change to put or post
+     * @return String error message or confirmation
+     */
 
     @POST
     @Path ( "/add" )
@@ -58,10 +74,15 @@ public class Services {
 
         }
 
-        return "Something run in the service process";
+        return "Something wrong in the service process";
     }
 
-    
+
+    /**
+     * Delete Service to create or update a book
+     * @param id is to find the book
+     * @return String error message or confirmation
+     */
 
     @DELETE
     @Path ( "/delete" )
@@ -78,12 +99,23 @@ public class Services {
         return response.getMessage ();
     }
 
+    /**
+     * Post Service to create or update a book
+     * @param id is to find the book
+     * @return String ID and Book Title
+     */
+
+
     @GET
     @Path ( "/get" )
     public String getPerson(@QueryParam ("id") int id) {
         return "Title: " + BookRepository.getRepository ().get(id).getTitle ().replace ( "%", " " )+ " / " + "ID: " + BookRepository.getRepository ().get(id).getId ();
     }
 
+    /**
+     * Post Service to create or update a book
+     * @return String list of book with details
+     */
 
     @GET
     @Path ( "/getAll" )
@@ -98,13 +130,13 @@ public class Services {
         }
 
         for (Book book : p) {
-            bookList += (            "Title: " + book.getTitle ().replace ( "%" , " " ) + " / " +
+            bookList = (            "Title: " + book.getTitle ().replace ( "%" , " " ) + " / " +
                                     "Publisher: " + book.getPublisher ().replace ( "%" , " " ) + " / " +
                                     "Author: " + book.getAuthor ().replace ( "%" , " " ) + " / " +
                                     "Description: " +  book.getDescription ().replace ( "%" , " " )+ " / " +
                                     " ID: " + book.getId () + " / " +
                                     "ISBN: " + book.getIsbn ()) +
-                                    "\n";
+                                    "\n".concat ( bookList );
             System.out.println ( " " );
         }
 

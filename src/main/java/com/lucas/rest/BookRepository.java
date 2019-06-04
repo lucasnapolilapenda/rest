@@ -9,6 +9,10 @@ package com.lucas.rest;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Represents the concurrent collection data
+ */
+
 public class BookRepository {
     /*private static BookRepository ourInstance = new BookRepository ( );
 

@@ -6,6 +6,10 @@ package com.lucas.rest;
  * @since 1.0
  */
 
+/**
+ * Represents all the messages
+ */
+
 public class Response {
 
     private boolean status;
